@@ -2,7 +2,6 @@ def merge(array, left, mid, right):
     i = left
     j = mid + 1
 
-
     tmp_array=[]
     while(i <= mid or j <= right):
         if(i<=mid and j<=right):
@@ -47,7 +46,7 @@ def mergeSort(array):
     else:
         mergeSortHelper(array, 0, len(array)-1)
 
-a = [2, 55, 8]
+a = [2, 55, 8,6, 7, 8, 9,4, 2, 1, 4, 6, 4, 3, 4]
 
 mergeSort(a)
 print(a)

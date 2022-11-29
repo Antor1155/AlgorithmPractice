@@ -16,7 +16,7 @@ def bubbleDown(lst , i):
         
         if(lst[small]< lst[i]):
             lst[small] , lst[i] = lst[i], lst[small]
-            bubbleDown(lst, small)
+            return bubbleDown(lst, small)
 
 
 

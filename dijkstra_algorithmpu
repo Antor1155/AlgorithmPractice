@@ -296,6 +296,8 @@ def computeShortestPath( graph, source_coordinates, dest_coordinates):
                     print("after weight adjustment", v[0].idx_in_priority_queue)
     path = [None]
     
+
+
     # def get_parents(v):
         
     #     path.insert(0, (v.x, v.y))            
@@ -306,6 +308,8 @@ def computeShortestPath( graph, source_coordinates, dest_coordinates):
     #         return
     #     return get_parents(v.pi)
 
+    # get_parents(destination)
+
     k = destination
     while k.pi:
         path.insert(0,(k.x, k.y))
@@ -315,7 +319,7 @@ def computeShortestPath( graph, source_coordinates, dest_coordinates):
     if k == source:
         path.insert(0, (k.x, k.y))
     path.pop()
-
+    print(path)
     return (path, destination.d)
     
         

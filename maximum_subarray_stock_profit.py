@@ -1,6 +1,7 @@
-a = [ -4, 5, -6, 3, 5, 2, -4, 20]
+a = [ -4, 5, -6, 3, 5, 2, -4, 4, 15, 5, 20]
 
 def max_profit(list, i, j):
+    print(list[i:j+1])
     if i == j:
         return 0
     if i + 1 == j:

@@ -1,7 +1,7 @@
 a = [ -4, 5, -6, 3, 5, 2, -4, 4, 15, 5, 20]
 
 def max_profit(list, i, j):
-    print(list[i:j+1])
+    # print(list[i:j+1])
     if i == j:
         return 0
     if i + 1 == j:
@@ -19,3 +19,25 @@ def max_profit(list, i, j):
 
 
 print(max_profit(a, 0, len(a)-1))
+
+
+# doing the same thing with complexity 0(n)
+
+def maxSubArray(a):
+    n = len(a)
+    if n == 1:
+        return 0
+    # your code here
+    min = float("inf")
+    maximum = 0
+    for i in a:
+        if i < min:
+            min = i
+        if i - min > maximum:
+            maximum = i - min
+    
+    return maximum
+        
+
+print(maxSubArray(a))
+        

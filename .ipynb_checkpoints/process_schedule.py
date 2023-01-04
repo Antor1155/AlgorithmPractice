@@ -1,6 +1,25 @@
 # third week assignment
 # allocate works to n processors in a manner the max finish time of processors in the lowest 
 
+
+# **************************************************
+# this process don't privide the best ans and give answer within
+#  range of (2- 1/m) of optimal solution 
+#  where m is the number of processors. but as making all combination of 1000 numbers 
+# in 10 processors in 10 ** 1000 which is even more than atoms in galaxy. so, here, even
+# optimal solution is possible, we don't want it.
+# this approach is for online when input in coming.
+
+
+# but offline approach with sorted jobs in decending order (high to low) will give
+#  the best ans .. all process same, with only the jobs are sorted then we use greed alg.all
+
+#  ********************************************
+
+
+
+
+
 def compute_makespan(times, m, assign):
     # times is an array of job times of size n
     # m is the number of processors

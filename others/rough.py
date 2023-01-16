@@ -54,6 +54,22 @@ def final_qs(l, start):
     else:
         return
 
+def convertBack(l):
+    for i in range(len(l)):
+        if l[i][1] == -1:
+            l[i].pop()
+            l[i].pop()
+        elif l[i][2] == -1:
+            l[i].pop()
+        
+        if len(l[i]) == 1:
+            l[i] = str(l[i][0])
+        elif len(l[i]) == 2:
+            l[i] = str(l[i][0]) + "." + str(l[i][1])
+        else:
+            l[i] = str(l[i][0]) + "." + str(l[i][1]) + "." + str(l[i][2])
+        
+
 
 def solution(l):
     converter(l)
@@ -64,8 +80,10 @@ def solution(l):
     qs_on_cm_first(l, 0)
     # fixed to do at second level 
     final_qs(l, 0)
+
+    convertBack(l)
     print(l)
 
-l = ["1.11", "2.1.0","1", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"]
+l = ["1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"]
 
 solution(l)

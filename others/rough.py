@@ -24,7 +24,7 @@ def converter(l):
             l[i].append(-1)
 
 
-def special_for_second(l, start):
+def qs_on_cm_first(l, start):
     sec_start= start
     sec_ends = start
     for i in range(start + 1, len(l)):
@@ -32,9 +32,25 @@ def special_for_second(l, start):
             sec_ends += 1
         else:
             break
-    quicksort(l,sec_start, sec_ends,1 )
+    if sec_start != sec_ends:
+        quicksort(l,sec_start, sec_ends,1 )
     if sec_ends < len(l)-1:
-        special_for_second(l, sec_ends+1)
+        qs_on_cm_first(l, sec_ends+1)
+    else:
+        return
+
+def final_qs(l, start):
+    start= start
+    end = start
+    for i in range(start + 1, len(l)):
+        if l[i][0] == l[start][0] and l[i][1] == l[start][1]:
+            end += 1
+        else:
+            break
+    if start != end:
+        quicksort(l,start, end, 2 )
+    if end < len(l)-1:
+        final_qs(l, end+1)
     else:
         return
 
@@ -45,9 +61,9 @@ def solution(l):
             
     quicksort(l, 0, len(l)-1, 0)
     # fixed to do 
-    special_for_second(l, 0)
-    # quicksort(l, 1, 5, 1)
-    # quicksort(l, 3, 4, 2)
+    qs_on_cm_first(l, 0)
+    # fixed to do at second level 
+    final_qs(l, 0)
     print(l)
 
 l = ["1.11", "2.1.0","1", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"]

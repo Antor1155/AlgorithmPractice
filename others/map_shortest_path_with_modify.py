@@ -1,3 +1,4 @@
+
 from collections import deque
 # modify array being safe in try function 
 def safe_mod(array, h, w, q, d):
@@ -45,8 +46,8 @@ def safe_check(array,h, w, present_d):
     try:
         # up 2 step
         if array[h-1][w] == 1 and h-1 > -1:
-            if array[h][w][2] - array[h-2][w][2] > 2 and h -2 > -1:
-                tem = array[h-2][w][2] + 2 + present_d - array[h][w][2]
+            if  array[h-2][w][2] > 0 and h -2 > -1:
+                tem = array[h-2][w][2] + 1 +  abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -56,8 +57,8 @@ def safe_check(array,h, w, present_d):
     try:
         # up left 1step
         if array[h-1][w] == 1 and h-1 > -1:
-            if array[h][w][2] - array[h-1][w-1][2] > 2 and w-1 > -1:
-                tem = array[h-1][w-1][2] + 2 + present_d - array[h][w][2]
+            if array[h-1][w-1][2] > 0 and w-1 > -1:
+                tem = array[h-1][w-1][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -65,8 +66,8 @@ def safe_check(array,h, w, present_d):
     try:
         # up right 1 step
         if array[h-1][w] == 1 and h-1 > -1:
-            if array[h][w][2] - array[h-1][w+1][2] > 2:
-                tem = array[h-1][w+1][2] + 2 + present_d - array[h][w][2]
+            if array[h-1][w+1][2] > 0:
+                tem = array[h-1][w+1][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -76,8 +77,8 @@ def safe_check(array,h, w, present_d):
     try:
         # down 2 step
         if array[h+1][w] == 1:
-            if array[h][w][2] - array[h+2][w][2] > 2:
-                tem = array[h+2][w][2] + 2 + present_d - array[h][w][2]
+            if array[h+2][w][2] > 0:
+                tem = array[h+2][w][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -87,8 +88,8 @@ def safe_check(array,h, w, present_d):
     try:
         # below left
         if array[h+1][w] == 1:
-            if array[h][w][2] - array[h+1][w-1][2] > 2 and w-1 > -1:
-                tem = array[h+1][w-1][2] + 2 + present_d - array[h][w][2]
+            if array[h+1][w-1][2] > 0 and w-1 > -1:
+                tem = array[h+1][w-1][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -96,8 +97,8 @@ def safe_check(array,h, w, present_d):
     try:
         # below right
         if array[h+1][w] == 1:
-            if array[h][w][2] - array[h+1][w+1][2] > 2:
-                tem = array[h+1][w+1][2] + 2 + present_d - array[h][w][2]
+            if array[h+1][w+1][2] > 0:
+                tem = array[h+1][w+1][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -107,8 +108,8 @@ def safe_check(array,h, w, present_d):
     try:
         # left
         if array[h][w -1] == 1 and w -1 > -1:
-            if array[h][w][2] - array[h][w-2][2] > 2 and w-2 > -1:
-                tem = array[h][w-2][2] + 2 + present_d - array[h][w][2]
+            if array[h][w-2][2] > 0 and w-2 > -1:
+                tem = array[h][w-2][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -117,8 +118,8 @@ def safe_check(array,h, w, present_d):
     try:
         # right 
         if array[h][w +1] == 1:
-            if array[h][w][2] - array[h][w+2][2] > 2:
-                tem = array[h][w+2][2] + 2 + present_d - array[h][w][2]
+            if array[h][w+2][2] > 0:
+                tem = array[h][w+2][2] + 1 + abs(array[h][w][2])
                 if updated_d > tem :
                     updated_d = tem
     except:
@@ -175,7 +176,6 @@ def safe_mod_from_end(array, h, w, q, d, previous_distance):
 
 def solution(map):
     # Your code here
-        # Your code here
     q = deque()
     map[0][0] = [0, 0, 1]
     q.append([0, 0, 1])
@@ -196,7 +196,6 @@ def solution(map):
         succed, updated_distance = safe_mod_from_end(map, h, w, q, d-1, present_d)
         if succed:
             if updated_distance < present_d:
-                print("updated d:",updated_distance)
                 present_d = updated_distance
 
 
@@ -252,8 +251,9 @@ def solution(map):
 
 # confution: if there any case where is no way to elcape...... 
 
-
+# base1 ans = 7 
 base1 = [[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 0, 0], [1, 1, 1, 0]]
+# base2 ans = 11 
 base2 = [[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0]]
 # this case is for when no path connected need to bfs form end
 # priority last 
@@ -268,23 +268,26 @@ base2 = [[0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1
 # solved: priority 1 
 # for corner case i didn't think of which may join conrer
 # just need to change in safe check **********************
-# a = [[0, 0, 0, 0, 0, 0],
-#      [0, 1, 1, 1, 1, 0],
-#      [1, 0, 0, 0, 0, 0],
-#      [1, 0, 1, 1, 1, 1],
-#      [1, 0, 1, 1, 1, 1], 
-#      [1, 0, 0, 0, 0, 0]]
-
-#priority 2
-# for another case where bfs for last elemetn may solve the question
+# ans = 11 
 a = [[0, 0, 0, 0, 0, 0],
      [0, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 0], 
-     [1, 1, 1, 0, 0, 0],
-     [0, 1, 1, 0, 1, 1],
-     [0, 1, 1, 0, 1, 1], 
-     [0, 0, 0, 0, 0, 0]]
+     [1, 0, 0, 0, 0, 0],
+     [1, 0, 1, 1, 1, 1],
+     [1, 0, 1, 1, 1, 1], 
+     [1, 0, 0, 0, 0, 0]]
+
+# solved: priority 2
+# for another case where bfs for last elemetn may solve the question
+# expected ans = 12
+# a = [[0, 0, 0, 0, 0, 0],
+#      [0, 1, 1, 1, 1, 0],
+#      [0, 1, 1, 1, 1, 0], 
+#      [1, 1, 1, 0, 0, 0],
+#      [0, 1, 1, 0, 1, 1],
+#      [0, 1, 1, 0, 1, 1], 
+#      [0, 0, 0, 0, 0, 0]]
 
 print("solution of a : " ,solution(a))
+# solution(a)
 for i in a:
     print(i)

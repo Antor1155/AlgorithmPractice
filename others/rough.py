@@ -1,6 +1,8 @@
-a = [2, 2, 3]
+a = None
 
-if 0 != a != 1:
-    print(a)
+k = "have value"
+
+
+print((True, a) if a else (False, None))
 
 # print(type(a))

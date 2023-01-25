@@ -1,4 +1,4 @@
-#​ ​there​ ​must​ ​be​ ​different​ ​way​ ​and​ ​test​ ​5,​ ​6,​ ​7​ ​are​ ​failed​ ​because​ ​to​ ​
+# checker check bunnies id problem form level 3 or 2​
 #​ ​​ ​time​ ​exceeded
 
 #​ ​*******************************************
